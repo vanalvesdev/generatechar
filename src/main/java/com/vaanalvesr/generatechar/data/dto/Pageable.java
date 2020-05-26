@@ -8,7 +8,7 @@ import java.util.List;
 public class Pageable<T> {
 
     private int count;
-    private int next;
-    private int previous;
+    private String next;
+    private String previous;
     private List<T> results;
 }
