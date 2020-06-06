@@ -1,7 +1,10 @@
 package com.vaanalvesr.generatechar.core.domain;
 
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class Char {
 
     private CharClass charClass;

@@ -7,10 +7,7 @@ import com.vaanalvesr.generatechar.data.dto.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class CharServiceImpl  implements CharService {
@@ -22,7 +19,26 @@ public class CharServiceImpl  implements CharService {
 
     @Override
     public Char generate() {
-        return null;
+        Char character = new Char();
+        int numeroWeapons = getRandomNumberInts(1, 3);
+        int numeroSpells = getRandomNumberInts(1, 3);
+
+        character.setCharClass(getCharClass());
+        character.setRace(getRace());
+        List<Spell> spells = new ArrayList<>();
+        List<Weapon> weapons = new ArrayList<>();
+
+        for (int x = 0; x < numeroWeapons; x++) {
+            weapons.add(getWeapon());
+        }
+
+        for (int y = 0; y < numeroSpells; y++) {
+            spells.add(getSpell());
+        }
+
+        character.setSpells(spells);
+        character.setWeapons(weapons);
+        return character;
     }
 
     @Override

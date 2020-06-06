@@ -1,17 +1,11 @@
 package com.vaanalvesr.generatechar.entrypoint.controller;
 
-import com.vaanalvesr.generatechar.core.domain.CharClass;
-import com.vaanalvesr.generatechar.core.domain.Race;
-import com.vaanalvesr.generatechar.core.domain.Spell;
-import com.vaanalvesr.generatechar.core.domain.Weapon;
-import com.vaanalvesr.generatechar.entrypoint.dto.CharResponse;
+import com.vaanalvesr.generatechar.core.domain.*;
 import com.vaanalvesr.generatechar.core.usecase.CharService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import static com.vaanalvesr.generatechar.adapter.CharConvert.toDto;
 
 @RestController
 @RequestMapping("generate")
@@ -21,8 +15,8 @@ public class GenerateCharController {
     private CharService charService;
 
     @GetMapping
-    private CharResponse generate() {
-        return toDto(charService.generate());
+    private Char generate() {
+        return charService.generate();
     }
 
     @GetMapping("/race")
