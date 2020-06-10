@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  generatechar:
+    container_name: generatechar
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      OPEN5E_API_BASE: http://open5e:8888/
+    ports:
+      - 8080:8080
+    depends_on:
+      - open5e
+    links:
+      - open5e
+
+  open5e:
+    container_name: open5e
+    image: vaanalvesr/open5e-api-quicksetup:latest
+    ports:
+      - 8888:8888
